@@ -1,0 +1,27 @@
+{
+  "name": "@traptrace/sdk",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "JavaScript/TypeScript SDK for Stellar Soroban smart contract error decoding, on-chain transaction diagnostics, and remediation.",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node --test test/sdk.test.js"
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "smart-contracts",
+    "wasm",
+    "error-decoder",
+    "diagnostics",
+    "traptrace"
+  ],
+  "author": "OTimileyin <timileyin@users.noreply.github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrapTrace/traptrace-sdk.git"
+  }
+}
