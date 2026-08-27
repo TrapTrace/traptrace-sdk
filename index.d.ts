@@ -34,6 +34,56 @@ export interface NetworkConfig {
   passphrase: string;
 }
 
+export interface LintFinding {
+  ruleId: string;
+  name: string;
+  severity: 'CRITICAL' | 'WARNING';
+  message: string;
+  lineNum: number;
+  lineContent: string;
+  remediation: string;
+  errorId: string;
+}
+
+export interface LintReport {
+  totalFindings: number;
+  criticalCount: number;
+  warningCount: number;
+  findings: LintFinding[];
+}
+
+export interface GasProfileReport {
+  cpu: {
+    used: number;
+    limit: number;
+    percentage: number;
+    status: 'NORMAL' | 'WARNING' | 'CRITICAL';
+  };
+  memory: {
+    used: number;
+    limit: number;
+    percentage: number;
+    status: 'NORMAL' | 'WARNING' | 'CRITICAL';
+  };
+  footprint: {
+    readOnlyCount: number;
+    readWriteCount: number;
+  };
+  fees: {
+    stroops: number;
+    xlm: number;
+  };
+}
+
+export interface TtlHealthReport {
+  status: 'HEALTHY' | 'WARNING' | 'CRITICAL' | 'ARCHIVED';
+  remainingLedgers: number;
+  estimatedDaysRemaining: number;
+  isArchived: boolean;
+  needsRestoration: boolean;
+  recommendedBumpLedgers: number;
+}
+
 export declare const NETWORKS: Record<'testnet' | 'futurenet' | 'mainnet', NetworkConfig>;
 export declare const BUNDLED_ENTRIES: CatalogEntry[];
 
@@ -54,6 +104,19 @@ export declare function getAutoFix(errorId: string): {
 } | null;
 
 export declare function diagnoseSorobanError(errorString: string): DiagnosticResult;
+export declare function lintContractCode(code: string): LintReport;
+export declare function profileSimulation(simResult: Record<string, any>): GasProfileReport;
+export declare function calculateTtlHealth(liveUntilLedger: number | string, currentLedger: number | string): TtlHealthReport;
+export declare function estimateRentStroops(entryBytes: number, extendLedgers: number): {
+  bytes: number;
+  extendLedgers: number;
+  estimatedStroops: number;
+  estimatedXlm: number;
+};
+export declare function generateRustTest(errorId: string): {
+  title: string;
+  code: string;
+};
 
 export declare class TrapTraceClient {
   network: string;

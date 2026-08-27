@@ -8,8 +8,11 @@ export { decodeDiagnosticString, searchErrors } from './decoder.js';
 export { TrapTraceClient, NETWORKS } from './client.js';
 export { validateAuthTree } from './auth.js';
 export { CODE_FIXES, getAutoFix } from './fixes.js';
+export { lintContractCode, LINT_RULES } from './linter.js';
+export { profileSimulation, MAX_CPU_INSTRUCTIONS, MAX_MEM_BYTES } from './profiler.js';
+export { calculateTtlHealth, estimateRentStroops } from './storage.js';
+export { generateRustTest, TEST_FIXTURES } from './test_generator.js';
 
-// High-level diagnostic convenience helper
 import { decodeDiagnosticString } from './decoder.js';
 import { getAutoFix } from './fixes.js';
 
