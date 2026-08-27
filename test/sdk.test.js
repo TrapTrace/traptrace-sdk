@@ -16,9 +16,9 @@ import {
   generateRustTest
 } from '../src/index.js';
 
-test('BUNDLED_ENTRIES contains 29 verified entries', () => {
+test('BUNDLED_ENTRIES contains 35 verified entries', () => {
   assert.ok(Array.isArray(BUNDLED_ENTRIES));
-  assert.ok(BUNDLED_ENTRIES.length >= 29);
+  assert.ok(BUNDLED_ENTRIES.length >= 35);
 });
 
 test('decodeDiagnosticString identifies arithmetic error trap', () => {
