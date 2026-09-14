@@ -5,6 +5,7 @@
 [![CI Status](https://img.shields.io/badge/CI-Passing-2FA98C.svg?style=flat-square)](https://github.com/TrapTrace/traptrace-sdk/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Soroban](https://img.shields.io/badge/Soroban-Protocol%2021-amber.svg?style=flat-square)](https://stellar.org)
+[![Stellar Testnet](https://img.shields.io/badge/Testnet%20Contract-CD3WZZJX...-14B8A6.svg?style=flat-square)](https://stellar.expert/explorer/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL)
 [![Catalog](https://img.shields.io/badge/Catalog-29%20Verified%20Entries-blue.svg?style=flat-square)](https://github.com/TrapTrace/soroban-error-index)
 
 ---
@@ -139,6 +140,22 @@ import { searchErrors, BUNDLED_ENTRIES } from '@traptrace/sdk';
 const results = searchErrors('require_auth');
 console.log(`Found ${results.length} matching error patterns from ${BUNDLED_ENTRIES.length} entries`);
 ```
+
+---
+
+## 🏛️ Live Soroban Testnet Reference Contract
+
+The SDK repository includes a reference Soroban diagnostic sandbox smart contract in [`contracts/`](./contracts) deployed on **Stellar Testnet**:
+
+| Parameter | Value |
+|---|---|
+| **Contract ID** | [`CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL`](https://stellar.expert/explorer/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL) |
+| **Network** | Stellar Testnet (`Test SDF Network ; September 2015`) |
+| **WASM Hash** | `ba3d7ff61edbf57db778868df3474ba855b990b3d2e42125ce58ec1c26cd4741` |
+| **Explorer** | [Stellar.Expert Testnet](https://stellar.expert/explorer/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL) |
+| **Stellar Lab** | [Inspect in Stellar Lab](https://lab.stellar.org/r/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL) |
+
+This reference contract is used for integration testing, simulation profiling, and verifying that host error traps (such as arithmetic overflow panics and invocation authorization mismatches) are properly parsed and remediated by `@traptrace/sdk`.
 
 ---
 

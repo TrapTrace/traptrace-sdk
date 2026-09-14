@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Rust build artifacts
+target/
+contracts/target/
+
+# Dist / build output
+dist/
+*.wasm.bak
+
+# OS metadata
+.DS_Store
+Thumbs.db
