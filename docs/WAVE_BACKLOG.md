@@ -151,3 +151,12 @@ trivial; planning only. Actual Wave complexity and enrollment are set by maintai
 ## Contribution
 
 Open a focused feat/fix/test/docs branch. PRs explain behavior and actual validation and include Closes #<issue_id>. Follow CONTRIBUTING.md and SECURITY.md.
+
+## Published contributor issues
+
+- [Add recursive authorization-tree and credential fixtures](https://github.com/TrapTrace/traptrace-sdk/issues/1) — proposed medium.
+- [Verify nonce and expiry using explicit network context](https://github.com/TrapTrace/traptrace-sdk/issues/2) — proposed high.
+- [Replace whole-file auth lint suppression with scoped analysis](https://github.com/TrapTrace/traptrace-sdk/issues/3) — proposed high.
+- [Validate resource profiler input and estimate provenance](https://github.com/TrapTrace/traptrace-sdk/issues/4) — proposed medium.
+- [Verify declarations through an installed consumer](https://github.com/TrapTrace/traptrace-sdk/issues/5) — proposed medium.
+- [Document supported auth input types and migration](https://github.com/TrapTrace/traptrace-sdk/issues/6) — proposed trivial.
