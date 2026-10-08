@@ -22,7 +22,8 @@ impl TrapTraceSandboxContract {
 
     /// Deliberate arithmetic overflow tester to reproduce host error traps in SDK
     pub fn trap_arith(_env: Env, a: u64, b: u64) -> u64 {
-        a.checked_add(b).expect("TrapTrace: Arithmetic Overflow Trap")
+        a.checked_add(b)
+            .expect("TrapTrace: Arithmetic Overflow Trap")
     }
 
     /// Basic greeting endpoint

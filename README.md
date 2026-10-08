@@ -1,12 +1,12 @@
 # ⚡ @traptrace/sdk
 
-> JavaScript & TypeScript client library for Stellar Soroban smart contract error diagnostics, static AST linting, gas profiling, and test generation.
+> JavaScript & TypeScript client library for Stellar Soroban smart contract error diagnostics, heuristic source linting, gas profiling, and test generation.
 
 [![CI Status](https://img.shields.io/badge/CI-Passing-2FA98C.svg?style=flat-square)](https://github.com/TrapTrace/traptrace-sdk/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Soroban](https://img.shields.io/badge/Soroban-Protocol%2021-amber.svg?style=flat-square)](https://stellar.org)
 [![Stellar Testnet](https://img.shields.io/badge/Testnet%20Contract-CD3WZZJX...-14B8A6.svg?style=flat-square)](https://stellar.expert/explorer/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL)
-[![Catalog](https://img.shields.io/badge/Catalog-29%20Verified%20Entries-blue.svg?style=flat-square)](https://github.com/TrapTrace/soroban-error-index)
+[![Catalog](https://img.shields.io/badge/Catalog-35%20Entries-blue.svg?style=flat-square)](https://github.com/TrapTrace/soroban-error-index)
 
 ---
 
@@ -104,15 +104,14 @@ console.log(testFixture.code);
 ---
 
 ### 6. Validate Contract Authorization Trees
-Simulate invocation authorization hierarchies before submitting transactions:
+Decode a base64 `SorobanAuthorizationEntry` and inspect its actual invocation tree. A decoded entry has `REVIEW_REQUIRED` status: signatures, nonce, expiration and network authorization are not verified. `isValid` describes structural decoding only:
 
 ```typescript
 import { validateAuthTree } from '@traptrace/sdk';
 
 const authCheck = validateAuthTree(invocationXdr);
-if (!authCheck.isValid) {
-  console.error('Authorization trap detected:', authCheck.issues);
-}
+console.log(authCheck.status, authCheck.invocation, authCheck.issues);
+// Never use structural decoding as permission to submit a transaction.
 ```
 
 ---
@@ -131,8 +130,8 @@ console.log('Simulation Cost:', sim.cost);
 
 ---
 
-### 8. Search Verified Knowledge Graph (Offline Database)
-Query 29 testnet-verified smart contract error patterns offline with zero network latency:
+### 8. Search the Offline Error Catalog
+Query 35 cataloged smart contract error patterns offline with zero network latency:
 
 ```typescript
 import { searchErrors, BUNDLED_ENTRIES } from '@traptrace/sdk';
@@ -155,9 +154,13 @@ The SDK repository includes a reference Soroban diagnostic sandbox smart contrac
 | **Explorer** | [Stellar.Expert Testnet](https://stellar.expert/explorer/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL) |
 | **Stellar Lab** | [Inspect in Stellar Lab](https://lab.stellar.org/r/testnet/contract/CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL) |
 
-This reference contract is used for integration testing, simulation profiling, and verifying that host error traps (such as arithmetic overflow panics and invocation authorization mismatches) are properly parsed and remediated by `@traptrace/sdk`.
+The reference source exposes info, version, greeting and a deliberate arithmetic-overflow method. Its address is historical deployment evidence; current availability and source/WASM correspondence require a fresh lookup. It does not implement an authorization-failure fixture.
 
 ---
 
 ## 📄 License
 MIT © [TrapTrace Team](https://github.com/TrapTrace)
+
+## Submission evidence
+
+See [the submission brief](docs/SUBMISSION.md). Source linting uses regular expressions and can miss findings or report false positives; suggested fixes and generated Rust tests require review. Catalog verification badges are cleared pending error-specific reproduction evidence.

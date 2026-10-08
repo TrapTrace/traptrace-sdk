@@ -90,10 +90,14 @@ export declare const BUNDLED_ENTRIES: CatalogEntry[];
 export declare function decodeDiagnosticString(diagnosticStr: string): DiagnosticResult;
 export declare function searchErrors(query: string, options?: { category?: string }): CatalogEntry[];
 export declare function validateAuthTree(xdrString: string): {
+  /** True only for supported, structurally decoded authorization-entry XDR. */
   isValid: boolean;
-  status: string;
+  status: 'FAIL' | 'REVIEW_REQUIRED';
+  signaturesVerified: false;
   requiredSigners: string[];
-  functionName: string;
+  functionName: string | null;
+  invocation: Record<string, unknown> | null;
+  credentialsType: string | null;
   issues: string[];
 };
 
