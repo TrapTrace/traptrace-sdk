@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-08",
+  "network": "testnet",
+  "source": "Stellar Expert API",
+  "contract_record": {
+    "contract": "CD3WZZJXRE6KBHFPUKYS53BKDZRNCWUT4AVD5JHSWRH4LKFXZ6URCWXL",
+    "created": 1789384732,
+    "creator": "GDW7WKICDI2SMXNRCG3T22GVHPIKGG75H3PMDDCC7V67RYERAZALVV6W",
+    "wasm": "ba3d7ff61edbf57db778868df3474ba855b990b3d2e42125ce58ec1c26cd4741",
+    "invocations": 1,
+    "subinvocation": 0,
+    "events": 0,
+    "errors": 0,
+    "storage_entries": 1,
+    "validation": {
+      "status": "unverified"
+    }
+  },
+  "note": "Indexed record and WASM hash match the historical README claim. This does not independently verify every named trap."
+}
